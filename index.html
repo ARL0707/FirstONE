@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask the Consultants — Internal Consulting, Minus the Suits</title>
+<style>
+  :root {
+    --coral: #ff6b5d;
+    --coral-dark: #e8503f;
+    --teal: #17a398;
+    --teal-dark: #128077;
+    --cream: #fff8f0;
+    --ink: #2b2b2f;
+    --ink-soft: #5c5c66;
+    --card-bg: #ffffff;
+    --shadow: 0 10px 30px rgba(43, 43, 47, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo span.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--coral);
+  }
+
+  .nav-cta {
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--coral-dark); transform: translateY(-2px); }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 64px 24px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero .badge {
+    display: inline-block;
+    background: #ffe8d6;
+    color: var(--coral-dark);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    margin: 0 0 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 .highlight {
+    color: var(--coral);
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .hero p.lead {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin: 0 auto 34px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(255, 107, 93, 0.35);
+  }
+  .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 30px rgba(255, 107, 93, 0.45); }
+
+  .btn-secondary {
+    background: #fff;
+    color: var(--ink);
+    border: 2px solid #eee0d2;
+  }
+  .btn-secondary:hover { border-color: var(--teal); color: var(--teal-dark); transform: translateY(-3px); }
+
+  .hero-note {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .float-emoji {
+    position: absolute;
+    font-size: 2.4rem;
+    opacity: 0.9;
+    animation: float 6s ease-in-out infinite;
+  }
+  .e1 { top: 60px; left: 6%; animation-delay: 0s; }
+  .e2 { top: 130px; right: 8%; animation-delay: 1.2s; }
+  .e3 { bottom: 30px; left: 14%; animation-delay: 2.4s; }
+  .e4 { bottom: 60px; right: 14%; animation-delay: 0.8s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(6deg); }
+  }
+
+  @media (max-width: 700px) {
+    .float-emoji { display: none; }
+  }
+
+  /* SECTION HEADERS */
+  .section-head {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 44px;
+  }
+  .section-head h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    margin: 0 0 12px;
+    font-weight: 800;
+  }
+  .section-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .eyebrow {
+    color: var(--teal-dark);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* SERVICES */
+  .services { padding: 70px 0; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px 24px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #f1e7da;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(43,43,47,0.12);
+  }
+
+  .card .icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: inline-block;
+    background: #ffe8d6;
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-radius: 16px;
+  }
+  .card:nth-child(2) .icon { background: #d9f2ef; }
+  .card:nth-child(3) .icon { background: #ffe0ea; }
+  .card:nth-child(4) .icon { background: #e6e6ff; }
+
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+  .card p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: #fff;
+    padding: 70px 0;
+    border-radius: 40px;
+    margin: 0 16px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    counter-reset: step;
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  .step .num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 1.2rem;
+  }
+  .step:nth-child(1) .num { background: var(--coral); }
+  .step:nth-child(2) .num { background: var(--teal); }
+  .step:nth-child(3) .num { background: #7a6bff; }
+
+  .step h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .step p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 70px 0; }
+
+  .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+
+  .quote-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: var(--shadow);
+    border: 1px solid #f1e7da;
+  }
+
+  .quote-card p.quote {
+    font-size: 1.02rem;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .quote-card p.quote::before { content: "\201C"; color: var(--coral); font-weight: 800; }
+  .quote-card p.quote::after { content: "\201D"; color: var(--coral); font-weight: 800; }
+
+  .quote-person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--coral), var(--teal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+  .quote-person .name {
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .quote-person .role {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  /* FOOTER CTA */
+  .cta-band {
+    background: linear-gradient(135deg, var(--coral) 0%, #ff8f6b 100%);
+    color: #fff;
+    border-radius: 32px;
+    margin: 40px 16px 60px;
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin: 0 0 14px;
+    font-weight: 800;
+  }
+  .cta-band p {
+    margin: 0 0 30px;
+    font-size: 1.05rem;
+    opacity: 0.95;
+  }
+  .cta-band .btn-primary {
+    background: #fff;
+    color: var(--coral-dark);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  }
+  .cta-band .btn-primary:hover { box-shadow: 0 16px 30px rgba(0,0,0,0.2); }
+
+  footer {
+    text-align: center;
+    padding: 30px 24px 50px;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="dot"></span>Ask the Consultants</div>
+  <a href="#book" class="nav-cta">Book a chat</a>
+</nav>
+
+<section class="hero">
+  <span class="float-emoji e1">💡</span>
+  <span class="float-emoji e2">📈</span>
+  <span class="float-emoji e3">🧩</span>
+  <span class="float-emoji e4">🚀</span>
+  <div class="wrap">
+    <span class="badge">Internal • Free • Actually Helpful</span>
+    <h1>Stuck on something?<br>Let's <span class="highlight">figure it out</span> together.</h1>
+    <p class="lead">Ask the Consultants is your friendly internal team for strategy, process, and "wait, how do we even do this" moments. No decks required.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn btn-primary">📅 Book a Session</a>
+      <a href="#services" class="btn btn-secondary">See what we help with</a>
+    </div>
+    <p class="hero-note">Usually booked within 48 hours. No forms longer than 3 fields, promise.</p>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What we help with</span>
+      <h2>Bring us the messy stuff</h2>
+      <p>If it's fuzzy, tangled, or "we've always just done it this way" — that's our favorite kind of problem.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">🧭</span>
+        <h3>Strategy &amp; Planning</h3>
+        <p>Turning a vague goal into a plan people actually want to follow.</p>
+      </div>
+      <div class="card">
+        <span class="icon">⚙️</span>
+        <h3>Process &amp; Ops</h3>
+        <p>Untangling workflows so your team stops fighting the process.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🖥️</span>
+        <h3>Tools &amp; Tech</h3>
+        <p>Picking, wiring up, or rescuing the systems your team relies on.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📊</span>
+        <h3>Growth &amp; Metrics</h3>
+        <p>Making sense of the numbers and what to actually do about them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps. Zero jargon.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Reach out</h3>
+        <p>Grab a slot on the calendar — takes less time than making coffee.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Chat it through</h3>
+        <p>We dig into the real problem, not just the symptom.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Get unstuck</h3>
+        <p>Walk away with a clear next step, not a 40-slide deck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">From your fellow teammates</span>
+      <h2>People keep coming back</h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote-card">
+        <p class="quote">They helped us untangle a process that had confused everyone for two years, in one session.</p>
+        <div class="quote-person">
+          <span class="avatar">JT</span>
+          <div>
+            <div class="name">J. Torres</div>
+            <div class="role">Operations</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <p class="quote">Genuinely fun to talk to, and I left with an actual plan instead of more homework.</p>
+        <div class="quote-person">
+          <span class="avatar">AM</span>
+          <div>
+            <div class="name">A. Mensah</div>
+            <div class="role">Product</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <p class="quote">No judgment for our slightly chaotic spreadsheet situation. Just solutions.</p>
+        <div class="quote-person">
+          <span class="avatar">RK</span>
+          <div>
+            <div class="name">R. Kaur</div>
+            <div class="role">Finance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="book">
+  <div class="wrap">
+    <h2>Let's untangle it, whatever "it" is.</h2>
+    <p>Booking takes under a minute. Bring your messiest problem.</p>
+    <a href="#book" class="btn btn-primary">📅 Book a Session</a>
+  </div>
+</section>
+
+<footer>
+  Ask the Consultants — an internal team that's here to help, not to bill hours. 💬
+</footer>
+
+</body>
+</html>
